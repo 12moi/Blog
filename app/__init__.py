@@ -9,6 +9,8 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_uploads import IMAGES, UploadSet,configure_uploads
 
+from app.models import User
+
 db = SQLAlchemy()
 mail = Mail()
 bootstap = Bootstrap()
@@ -33,5 +35,9 @@ def create_app():
     bootstap.init_app(app)
     # configure_uploads(app,photos)
     mail.init_app(app)
+
+    @app.shell_context_processor
+    def make_shell_context():
+     return dict(db=db, User=User )
 
     return app

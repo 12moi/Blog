@@ -17,6 +17,10 @@ manager.add_command('run',Server(use_debugger=True))
 def make_shell_context():
     return dict(app = app,db = db,User = User)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+    
 @manager.command
 def test():
     '''

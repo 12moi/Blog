@@ -1,12 +1,15 @@
 
 
 
-from . import db,login_manager
+
 from flask_login import current_user,UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
+# from app import login_manager
+from app import  db
 
-@login_manager.user_loader
+
+# @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
