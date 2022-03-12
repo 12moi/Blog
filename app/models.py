@@ -6,12 +6,18 @@ from flask_login import current_user,UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
 # from app import login_manager
-from app import  db
+from flask_sqlalchemy import SQLAlchemy
 
+# from app import  db
+db = SQLAlchemy()
 
+# from . import login_manager
 # @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
+
+# def load_user(user_id):
+#     return User.query.get(user_id)
+
+
 
 class User (UserMixin,db.Model):
     __tablename__ = 'users'
