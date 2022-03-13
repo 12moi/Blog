@@ -22,7 +22,7 @@ import os
 class Config:
 
     SECRET_KEY = 'my1212mk'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12moi12@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12access@localhost/blog'
     # 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST ='app/static/photos'
@@ -42,7 +42,7 @@ class ProdConfig(Config):
     
 class DevConfig(Config):
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12moi12@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:12access@localhost/blog'
     DEBUG = True
 
 config_options = {
