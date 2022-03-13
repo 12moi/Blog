@@ -1,9 +1,16 @@
 
 
-import request,json
+import urllib.request, json
+from .models import Quote
 
 def get_quotes():
-    response = request.get('http://quotes.stormconsultancy.co.uk/random.json')
-    if response.status_code == 200:
-        quote = response.json()
-        return quote
+    get_quotes_url = "http://quotes.stormconsultancy.co.uk/random.json"
+    get_quotes_data = urllib.request.urlopen(get_quotes_url)
+    get_quotes_response = json.loads(get_quotes_data.read())
+    
+
+    author = get_quotes_response.get('author')
+    quote = get_quotes_response.get('quote')
+
+    new_quote = Quote(author, quote)
+    return new_quote
