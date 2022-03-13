@@ -102,6 +102,11 @@ class Comment(db.Model):
     def __repr__(self):
         return f'Comment {self.comment}'
 
+class Quote:
+    def __init__(self,author,quote):
+        self.author=author
+        self.quote=quote
+
 class Subscriber(db.Model):
     __tablename__='subscribers'
 
