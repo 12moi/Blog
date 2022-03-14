@@ -12,7 +12,8 @@ from flask_uploads import IMAGES, UploadSet,configure_uploads
 import app 
 from config import config_options
 
-from app.models import User,Blog
+
+from app.models import User
 
 db = SQLAlchemy()
 mail = Mail()
@@ -44,6 +45,6 @@ def create_app(config_name):
 
     @app.shell_context_processor
     def make_shell_context():
-     return dict(db=db, User=User, Blog=Blog )
+     return dict(db=db, User=User )
 
     return app

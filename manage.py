@@ -3,7 +3,7 @@
 
 from xml.etree.ElementTree import Comment
 from flask_script import Manager,Server
-from app.main.views import blog
+from app.main.views import Blog
 from app.models import Blog, User
 from flask_migrate import Migrate, MigrateCommand
 from app import create_app,db

@@ -2,7 +2,7 @@
 
 from flask import render_template,redirect,url_for,abort,request,flash
 from app.main import main
-from app.models import User,Blog,Comment,Subscriber
+from app.models import User,Comment,Subscriber,Blog
 from .forms import UpdateProfile,CreateBlog
 from .. import db
 # from app.request import get_quotes
