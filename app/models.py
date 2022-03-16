@@ -1,26 +1,17 @@
 
 
 
-
-from flask_login import current_user,UserMixin
+from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
-# from app import login_manager
-from flask_sqlalchemy import SQLAlchemy
-
-# from app import  db
-db = SQLAlchemy()
-
 # from . import login_manager
-# @login_manager.user_loader
-
-# def load_user(user_id):
-#     return User.query.get(user_id)
+from flask_sqlalchemy import SQLAlchemy
+from . import db
 
 
 
 
-class User (UserMixin,db.Model):
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),unique = True,nullable = False)
@@ -30,8 +21,6 @@ class User (UserMixin,db.Model):
     hashed_password = db.Column(db.String(255),nullable = False)
     blog = db.relationship('Blog', backref='user', lazy='dynamic')
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
-    
-    # db.create_all()
 
     @property
     def set_password(self):
@@ -40,7 +29,6 @@ class User (UserMixin,db.Model):
     @set_password.setter
     def password(self, password):
         self.hashed_password = generate_password_hash(password)
-
 
     def verify_password(self,password):
         return check_password_hash(self.hashed_password,password)
@@ -56,7 +44,7 @@ class User (UserMixin,db.Model):
         return "User: %s" %str(self.username)
 
 class Blog(db.Model):
-    __tablename__ = 'blog'
+    __tablename__ = 'blogs'
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(255),nullable=False)
     content = db.Column(db.Text(),nullable=False)
@@ -86,7 +74,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
-    blog_id = db.Column(db.Integer,db.ForeignKey("blog.id"))
+    blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save(self):
@@ -100,7 +88,6 @@ class Comment(db.Model):
     def get_comment(id):
         comment = Comment.query.all(id=id)
         return comment
-
 
     def __repr__(self):
         return f'Comment {self.comment}'

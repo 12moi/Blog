@@ -1,11 +1,15 @@
 
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
 
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark navbarbg">
-    <a class="navbar-brand" href="{{url_for('main.index')}}"><strong> Blog </strong> </a>
+
+    
+
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark navbarbg" style="background-color: rgb(86, 82, 100);"><strong>
+    <a class="navbar-brand" href="{{url_for('main.index')}}" style="background-color: rgb(86, 82, 100);"><strong> Blog </strong> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4" style="background-color: rgb(86, 82, 100);"><strong>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                   <a class="nav-link" href="{{url_for('main.index')}}">All Blogs</a>
